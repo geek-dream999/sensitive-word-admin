@@ -5,9 +5,9 @@ spring:
   datasource:
     druid:
       username: root
-      password: zhijian.2024
-#      url: jdbc:mysql://49.233.53.131:3307/sensitive_word?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
-      url: jdbc:mysql://121.40.130.244:3306/sensitive_word?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      password: password
+        #      url: jdbc:mysql://49.233.53.131:3307/sensitive_word?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      url: jdbc:mysql://ip:port/sensitive_word?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
       driver-class-name: com.mysql.jdbc.Driver
 
   ## MVC
