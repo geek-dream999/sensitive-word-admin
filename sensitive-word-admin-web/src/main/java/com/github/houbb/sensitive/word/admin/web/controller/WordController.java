@@ -5,6 +5,7 @@ import com.github.houbb.auto.log.annotation.AutoLog;
 import com.github.houbb.heaven.util.io.FileUtil;
 import com.github.houbb.iexcel.util.ExcelHelper;
 import com.github.houbb.sensitive.word.admin.web.biz.WordBiz;
+import com.github.houbb.sensitive.word.admin.web.config.MySensitiveWordScheduleRefresh;
 import com.github.houbb.web.common.dto.resp.BaseResp;
 import com.github.houbb.web.common.dto.resp.BasePageInfo;
 import com.github.houbb.web.common.util.RespUtil;
@@ -44,6 +45,9 @@ public class WordController {
     @Autowired
     private WordBiz wordBiz;
 
+    @Autowired
+    private MySensitiveWordScheduleRefresh mySensitiveWordScheduleRefresh;
+
     /**
     * 首页信息
     * @return 结果
@@ -67,6 +71,8 @@ public class WordController {
     public BaseResp add(@RequestBody final Word entity) {
         wordBiz.addTx(entity);
 
+        mySensitiveWordScheduleRefresh.refresh();
+
         return RespUtil.success();
     }
 
@@ -81,6 +87,8 @@ public class WordController {
     @Menu(id = "word-edit", pid = "word", name = "敏感词表-编辑", orderNum = 2, type = "API", level = 2)
     public BaseResp edit(final Word entity) {
         wordBiz.editTx(entity);
+
+        mySensitiveWordScheduleRefresh.refresh();
 
         return RespUtil.success();
     }
@@ -111,6 +119,8 @@ public class WordController {
     @Menu(id = "word-remove", pid = "word", name = "敏感词表-删除", orderNum = 4, type = "API", level = 2)
     public BaseResp remove(@PathVariable final Integer id) {
         wordBiz.removeTx(id);
+
+        mySensitiveWordScheduleRefresh.refresh();
 
         return RespUtil.success();
     }
