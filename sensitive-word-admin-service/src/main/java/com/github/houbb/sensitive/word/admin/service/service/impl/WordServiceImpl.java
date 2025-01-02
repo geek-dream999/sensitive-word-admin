@@ -90,7 +90,7 @@ public class WordServiceImpl extends ServiceImpl<WordMapper, Word> implements Wo
         }
 
         // 更新时间倒排
-        wrapper.orderDesc(Collections.singleton("update_time"));
+        wrapper.orderDesc(Collections.singleton("id"));
         return wrapper;
     }
 
